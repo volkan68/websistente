@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Implementando un chat con node.js - Websistente</title>
+  <meta name="description" content="Una de las ventajas que ofrece node.js es su naturaleza asíncrona y por lo tanto permite escalar fácilmente sin preocuparnos por sincrónizar procesos entre sí ya que no existen procesos una aplicación node.js consiste de un único hilo de ejecución. Una de las aplicaciones que más se beneficia de esta característica es justamente un chat y ha sido uno de los selling points favoritos de los evangelistas de node.js. Pero qué tan sincillo es programar un chat en node."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Websistente",
+    
+    "url": "http:\/\/websistente.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/websistente.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/websistente.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/websistente.com\/_posts\/2013-11-04-implementando-un-chat-con-node-js\/",
+          "name": "Implementando un chat con node.js"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "volkan68"
+  },
+  "headline": "Implementando un chat con node.js",
+  "description" : "Una de las ventajas que ofrece node.js es su naturaleza asíncrona y por lo tanto permite escalar fácilmente sin preocuparnos por sincrónizar procesos entre sí ya que no existen procesos una aplicación node.js consiste de un único hilo de ejecución. Una de las aplicaciones que más se beneficia de esta característica es justamente un chat y ha sido uno de los selling points favoritos de los evangelistas de node.js. Pero qué tan sincillo es programar un chat en node.",
+  "inLanguage" : "es",
+  "wordCount":  708 ,
+  "datePublished" : "2013-11-04T11:56:29",
+  "dateModified" : "2013-11-04T11:56:29",
+  "image" : "http:\/\/websistente.com\/",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "http:\/\/websistente.com\/_posts\/2013-11-04-implementando-un-chat-con-node-js\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/websistente.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/websistente.com\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Implementando un chat con node.js" />
+<meta property="og:description" content="Una de las ventajas que ofrece node.js es su naturaleza asíncrona y por lo tanto permite escalar fácilmente sin preocuparnos por sincrónizar procesos entre sí ya que no existen procesos una aplicación node.js consiste de un único hilo de ejecución. Una de las aplicaciones que más se beneficia de esta característica es justamente un chat y ha sido uno de los selling points favoritos de los evangelistas de node.js. Pero qué tan sincillo es programar un chat en node.">
+<meta property="og:url" content="http://websistente.com/_posts/2013-11-04-implementando-un-chat-con-node-js/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Websistente" />
+
+  <meta name="twitter:title" content="Implementando un chat con node.js" />
+  <meta name="twitter:description" content="Una de las ventajas que ofrece node.js es su naturaleza asíncrona y por lo tanto permite escalar fácilmente sin preocuparnos por sincrónizar procesos entre sí ya que no existen procesos una aplicación …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.92.1" />
+  <link rel="alternate" href="http://websistente.com/index.xml" type="application/rss+xml" title="Websistente"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://websistente.com/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://websistente.com/css/syntax.css" /><link rel="stylesheet" href="http://websistente.com/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://websistente.com/">Websistente</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Podcast" href="/podcast">Podcast</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Autor" href="/volkan-rivera">Autor</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="_posts-heading">
+              
+                <h1>Implementando un chat con node.js</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Una de las ventajas que ofrece node.js es su naturaleza asíncrona y por lo tanto permite escalar fácilmente sin preocuparnos por sincrónizar procesos entre sí ya que no existen procesos una aplicación node.js consiste de un único hilo de ejecución. Una de las aplicaciones que más se beneficia de esta característica es justamente un chat y ha sido uno de los selling points favoritos de los evangelistas de node.js. Pero qué tan sincillo es programar un chat en node.js, pues bien como dice <a href="http://es.wikipedia.org/wiki/Eric_S._Raymond">Eric Raymond</a> en <a href="http://www.openbiz.com.ar/La%20Catedral%20y%20El%20Bazar.pdf">La Catedral y el Bazar</a>: &ldquo;<em>Los buenos programadores saben qué código escribir. Los grandes programadores saben qué código reescribir</em>&rdquo;. Así que para que empezar desde cero, he encontrado un muy buen esqueleto con que comenzar una aplicación de chat en <a href="https://github.com/wmora/nodejs-express-socketio-chatroom">Github</a>, escrita por desarrollador llamado <a href="https://plus.google.com/+WilliamMora/posts">William Mora</a>.</p>
+<p><!-- raw HTML omitted -->Como es obvio vamos a necesitar un servidor donde desplegar nuestra aplicación, existen varias opciones desde las gratuitas como <!-- raw HTML omitted --><a href="https://www.heroku.com/">Heroku</a><!-- raw HTML omitted -->, hasta las pagadas y super escalables como <!-- raw HTML omitted --><a href="http://aws.amazon.com/ec2/">Amazon EC2</a><!-- raw HTML omitted -->, para nuestro caso usaré una instancia mini del proveedor donde trabajo <!-- raw HTML omitted --><a href="http://www.openvirtuals.com/">OpenVirtuals.com</a><!-- raw HTML omitted -->. Los 256 MB que ofrece y los dos núcleos que ofrece esta opción son más que suficientes para atender decenas de usuarios concurrentes.<!-- raw HTML omitted --></p>
+<p>Este es un breve tutorial que explica como tener nuestro chat corriendo y se ofrecen las pautas generales de como modificar el look del chat. Este no es un proyecto final, no se cubren temas sobre como preparar node.js para escalar o protegerlo contra ataques.</p>
+<p>Primero comencemos por descargar nuestro chat y tenerlo corriendo, es algo que lograremos con los siguentes comandos:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+git clone https://github.com/wmora/nodejs-express-socketio-chatroom.git
+
+cd nodejs-express-socketio-chatroom
+
+npm install
+
+npm -g install forever
+</code></pre><p>Aunque el módulo <a href="https://github.com/nodejitsu/forever">Forever</a> no es técnicamente necesario para la ejecución de nuestro chat, es importante instalarlo si tenemos pensado dejar corriendo nuestro chat incluso si nos deslogueamos de nuestra consola.</p>
+<p>Ahora ya estamos listos para arrancar nuestro chat con &ldquo;Forever&rdquo; usando este comando:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+forever start server.js
+</code></pre><p>¿Cómo sabemos que nuestro chat está corriendo?, bueno la forma más sencilla es abriendo nuestro navegador y apuntando al URL de nuestro chat, pero la otra opción es usar Forever para ver el status de los procesos que está corriendo:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+forever list
+info:    Forever processes running
+data:        uid  command             script    forever pid   logfile                      uptime       
+data:    [0] oFfy /usr/local/bin/node server.js 31025   31027 /home/chat/.forever/oFfy.log 0:0:12:8.220 
+</code></pre><p>Si deseamos detener nuestro chat, sólo debemos usar este comando:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+	forever stop server.js
+</code></pre><p>Ahora toca hacer público nuestro chat, para ello usaremos <strong>Nginx</strong> como proxy inverso para nuestro proyecto. Igualmente necesitamos asignarle un nombre para que sea fácilmente accesible, en particular a esta prueba le he puesto el nombre &ldquo;chat.cix.pe&rdquo; o alternativamente &ldquo;<a href="http://www.chat.cix.pe">www.chat.cix.pe</a>&rdquo;. Para lo primero siguiendo los pasos descritos en un <a href="http://websistente.com/blog/2013/10/como-usar-node-js-en-produccion/">post anterior</a> debemos editar el archivo &ldquo;<!-- raw HTML omitted --><strong>/etc/nginx/sites-available/default</strong><!-- raw HTML omitted -->&rdquo; y poner esto dentro del mismo:</p>
+<p>**<!-- raw HTML omitted --><!-- raw HTML omitted -->upstream chat {</p>
+<h1 id="point-to-our-internal-chat-port">Point to our internal chat port</h1>
+<p>server 127.0.0.1:8080 max_fails=0 fail_timeout=10s weight=1;<!-- raw HTML omitted --><!-- raw HTML omitted -->**</p>
+<p><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> # Send visitors back to the same server each time.<br>
+ip_hash;<!-- raw HTML omitted --><!-- raw HTML omitted --></strong></p>
+<p><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> # Enable number of keep-alive connections.<br>
+keepalive 512;<br>
+}<!-- raw HTML omitted --><!-- raw HTML omitted --></strong></p>
+<p><strong><!-- raw HTML omitted --><!-- raw HTML omitted -->server {<br>
+listen 80; ## listen for ipv4; this line is default and implied<br>
+#listen [::]:80 default ipv6only=on; ## listen for ipv6<!-- raw HTML omitted --><!-- raw HTML omitted --></strong></p>
+<p><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> root /usr/share/nginx/www;<br>
+index index.html index.htm;<!-- raw HTML omitted --><!-- raw HTML omitted --></strong></p>
+<p><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->server_name chat.cix.pe <a href="http://www.chat.cix.pe">www.chat.cix.pe</a>;<!-- raw HTML omitted --><!-- raw HTML omitted --></strong></p>
+<p><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> # Timeout for closing keep-alive connections.<br>
+keepalive_timeout 10;<!-- raw HTML omitted --><!-- raw HTML omitted --></strong></p>
+<p><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> # Enable gzip compression.<br>
+gzip on;<br>
+gzip_http_version 1.1;<br>
+gzip_vary on;<br>
+gzip_comp_level 6;<br>
+gzip_proxied any;<br>
+gzip_buffers 16 8k;<br>
+gzip_disable &ldquo;MSIE [1-6]\.(?!.*SV1)&quot;;<!-- raw HTML omitted --><!-- raw HTML omitted --></strong></p>
+<p>**<!-- raw HTML omitted --><!-- raw HTML omitted --> location / {</p>
+<h1 id="set-this-to-your-upstream-module">Set this to your upstream module.</h1>
+<p>proxy_pass http://chat;</p>
+<h1 id="proxy-headers">Proxy headers.</h1>
+<p>proxy_set_header X-Real-IP $remote_addr;<br>
+proxy_set_header X-Forwarded-Proto $scheme;<br>
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;<br>
+proxy_set_header Host $host;<br>
+proxy_set_header X-NginX-Proxy true;<br>
+proxy_set_header Upgrade $http_upgrade;<br>
+proxy_set_header Connection &ldquo;upgrade&rdquo;;<br>
+proxy_cache_bypass $http_upgrade;<br>
+proxy_http_version 1.1;<br>
+proxy_redirect off;</p>
+<h1 id="go-to-next-upstream-after-if-server-down">Go to next upstream after if server down.</h1>
+<p>proxy_next_upstream error timeout http_500 http_502 http_503 http_504;<br>
+proxy_connect_timeout 5s;</p>
+<h1 id="gateway-timeout">Gateway timeout.</h1>
+<p>proxy_read_timeout 20s;<br>
+proxy_send_timeout 20s;</p>
+<h1 id="buffer-settings">Buffer settings.</h1>
+<p>proxy_buffers 8 32k;<br>
+proxy_buffer_size 64k;<br>
+}<!-- raw HTML omitted --><!-- raw HTML omitted -->**</p>
+<p><!-- raw HTML omitted --><strong><!-- raw HTML omitted --> location /socket.io {<br>
+proxy_pass http://chat;<br>
+}<!-- raw HTML omitted --></strong><!-- raw HTML omitted --></p>
+<p><strong><!-- raw HTML omitted --><!-- raw HTML omitted -->}<!-- raw HTML omitted --><!-- raw HTML omitted --></strong></p>
+<p><!-- raw HTML omitted -->Una vez editado el archivo podemos reiniciar nuestro Nginx con el siguiente comando y estamos listos para chatear.<!-- raw HTML omitted --></p>
+<p>Cómo he explicado esto es sólo una demostración y no pretende ser un proyecto 100% terminado aún hay varias cosas que optimizar y asegurar aquí, pero espero que le sirva al lector como una guía práctica de cómo tener un chat escrito en node.js corriendo en un VPS con limitados recursos. Por lo pronto los espero en el chat <a href="http://chat.cix.pe/">chat.cix.pe</a>.</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://websistente.com/_posts/2013-11-01-usando-mysql-con-node-js/" data-toggle="tooltip" data-placement="top" title="Usando MySQL con node.js">&larr; Artículo anterior</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://websistente.com/_posts/2013-11-05-node-js-con-twitter-bootstrap/" data-toggle="tooltip" data-placement="top" title="node.js con Twitter Bootstrap">Artículo siguiente &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2014
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://websistente.com/">Websistente</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.92.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://websistente.com/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://websistente.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

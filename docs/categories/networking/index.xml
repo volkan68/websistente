@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networking on Websistente</title>
+    <link>http://websistente.com/categories/networking/</link>
+    <description>Recent content in Networking on Websistente</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-pe</language>
+    <lastBuildDate>Tue, 12 Nov 2013 09:26:26 -0500</lastBuildDate><atom:link href="http://websistente.com/categories/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iftop el «top» para interfaces de red</title>
+      <link>http://websistente.com/_posts/2013-11-12-iftop-el-top-para-interfaces-de-red/</link>
+      <pubDate>Tue, 12 Nov 2013 09:26:26 -0500</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-11-12-iftop-el-top-para-interfaces-de-red/</guid>
+      <description>iftop es una herramienta que hace con el tráfico de una interface de red, lo que &amp;ldquo;top&amp;rdquo; hace con el uso de un procesador. Esta herramienta escucha todo el tráfico de red a una interface determinada y nos muestra una tabla que resume el uso de ancho de banda usado por cada par de host o IPs connectadas (servidor/cliente), es muy útil para identificar si estamos recibiendo un ataque desde una IP en particular.</description>
+    </item>
+    
+    <item>
+      <title>Cómo instalar Ghost (plataforma de blog en node.js)</title>
+      <link>http://websistente.com/_posts/2013-11-07-como-instalar-ghost-plataforma-de-blog-en-node-js/</link>
+      <pubDate>Thu, 07 Nov 2013 09:59:42 -0500</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-11-07-como-instalar-ghost-plataforma-de-blog-en-node-js/</guid>
+      <description>Aunque WordPress es la plataforma de blog dominante en nuestros días, John O&amp;rsquo;Nolan inició un proyecto kickstarted para crear un sistema de blogging en node.js. Ghost se puso como meta recaudar £ 25,000 (U.S.$ 40,000) para financiar el desarrollo del proyecto y en 29 días recibió £ 196,362 (U.S.$ 314,000), debido a esta gran acogida es que decidió extender el proyecto y no sólo desarrollar un software para blogear escrito en node.</description>
+    </item>
+    
+    <item>
+      <title>Asegurando tu server Ubuntu</title>
+      <link>http://websistente.com/_posts/2013-11-06-asegurando-tu-server-ubuntu/</link>
+      <pubDate>Wed, 06 Nov 2013 09:50:51 -0500</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-11-06-asegurando-tu-server-ubuntu/</guid>
+      <description>La seguridad es uno de los puntos a los que debemos prestar mucha atención cuando ponemos un servidor en producción (es decir accesible a través de Internet), aunque no existe una receta mágina que vuelva invulnerable nuestro servidor, existen una serie de medidas básicas de seguridad que deberíamos tener en nuestro servidor para evitar los ataques más comunes y detectar algún intento de intrusión. En este post detallo una serie de medidas básicas para asegurar un servidor Ubuntu 12.</description>
+    </item>
+    
+    <item>
+      <title>Comandos básicos para controlar Exim</title>
+      <link>http://websistente.com/_posts/2013-09-17-comandos-basicos-para-controlar-exim/</link>
+      <pubDate>Tue, 17 Sep 2013 10:36:13 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-09-17-comandos-basicos-para-controlar-exim/</guid>
+      <description>Exim es el servidor de correo usado por defecto en Debian, la distribución que uso en la mayoría de mis proyectos. Exim no es tan popular como Postfix o Sendmail, pero desde mi punto de vista resulta mucho más robusto y escalable que los dos anteriores, pero como dice el refran en gustos y colores no han escrito los autores. Este post contiene los comando básicos que se pueden usar para gestionar la cola de correos de Exim en las operaciones, espero que les sea de utilidad en caso de que les toque lidiar con un VPS debian.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Desarrollo on Websistente</title>
+    <link>http://websistente.com/categories/desarrollo/</link>
+    <description>Recent content in Desarrollo on Websistente</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-pe</language>
+    <lastBuildDate>Thu, 21 Aug 2014 12:46:47 -0400</lastBuildDate><atom:link href="http://websistente.com/categories/desarrollo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>¿Qué lenguaje aprender primero?</title>
+      <link>http://websistente.com/_posts/2014-08-21-que-lenguaje-aprender-primero/</link>
+      <pubDate>Thu, 21 Aug 2014 12:46:47 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2014-08-21-que-lenguaje-aprender-primero/</guid>
+      <description>Esta es la eterna pregunta de todo novato y cuando es dicha en foros públicos por lo general es seguida por un largo debate entre &amp;ldquo;fundamentalistas&amp;rdquo; que parecen estar hablando más de religión que de una herramienta tecnológica. Desde que las computadoras comenzaron a llegar a las aulas universitarias se han probado diferente paradigmas de programación y con ellos diferentes implementaciones de dichos paradigmas en la forma de lenguajes de programación concretos.</description>
+    </item>
+    
+    <item>
+      <title>node-twitter un clone de twitter en node.js</title>
+      <link>http://websistente.com/_posts/2013-11-08-node-twitter-un-clone-de-twitter-en-node-js/</link>
+      <pubDate>Fri, 08 Nov 2013 12:22:37 -0500</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-11-08-node-twitter-un-clone-de-twitter-en-node-js/</guid>
+      <description>Revisando los repositorios de Github por proyectos interesantes escritos en node.js, he encontrado uno llamado node-twitter de Vinit Kumar. El código se ve limpio y sólo requiere la intalación de MongoDB como motor de base de datos, que afortunadamente ya hemos descrito en este blog como instalarlo localmente. Una version operativa del proyecto se puede visitar en este URL: http://ntwitter.nodejitsu.com/login. En este post voy a describir brevemente como hacer para tener una versión similar corriendo en tu VPS o servidor físico si es que deseas iniciar un proyecto similar.</description>
+    </item>
+    
+    <item>
+      <title>Cómo instalar Ghost (plataforma de blog en node.js)</title>
+      <link>http://websistente.com/_posts/2013-11-07-como-instalar-ghost-plataforma-de-blog-en-node-js/</link>
+      <pubDate>Thu, 07 Nov 2013 09:59:42 -0500</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-11-07-como-instalar-ghost-plataforma-de-blog-en-node-js/</guid>
+      <description>Aunque WordPress es la plataforma de blog dominante en nuestros días, John O&amp;rsquo;Nolan inició un proyecto kickstarted para crear un sistema de blogging en node.js. Ghost se puso como meta recaudar £ 25,000 (U.S.$ 40,000) para financiar el desarrollo del proyecto y en 29 días recibió £ 196,362 (U.S.$ 314,000), debido a esta gran acogida es que decidió extender el proyecto y no sólo desarrollar un software para blogear escrito en node.</description>
+    </item>
+    
+    <item>
+      <title>node.js con Twitter Bootstrap</title>
+      <link>http://websistente.com/_posts/2013-11-05-node-js-con-twitter-bootstrap/</link>
+      <pubDate>Tue, 05 Nov 2013 11:35:49 -0500</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-11-05-node-js-con-twitter-bootstrap/</guid>
+      <description>No hay duda que uno de los frameworks/templates para diseño de websites HTML5/CSS3 más usados en la actualidad es Bootstrap (un proyecto Open Source inciado por Twitter), una de las razones de su popularidad es que este template por defecto nos ofrece un diseño responsive y mobile first, lo cual convierte a esta herramienta en ideal para el desarrollo de websites que se vean bien no importa si se accede a ellos desde un smartphone, una tablet o un PC.</description>
+    </item>
+    
+    <item>
+      <title>Implementando un chat con node.js</title>
+      <link>http://websistente.com/_posts/2013-11-04-implementando-un-chat-con-node-js/</link>
+      <pubDate>Mon, 04 Nov 2013 11:56:29 -0500</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-11-04-implementando-un-chat-con-node-js/</guid>
+      <description>Una de las ventajas que ofrece node.js es su naturaleza asíncrona y por lo tanto permite escalar fácilmente sin preocuparnos por sincrónizar procesos entre sí ya que no existen procesos una aplicación node.js consiste de un único hilo de ejecución. Una de las aplicaciones que más se beneficia de esta característica es justamente un chat y ha sido uno de los selling points favoritos de los evangelistas de node.js. Pero qué tan sincillo es programar un chat en node.</description>
+    </item>
+    
+    <item>
+      <title>Usando MySQL con node.js</title>
+      <link>http://websistente.com/_posts/2013-11-01-usando-mysql-con-node-js/</link>
+      <pubDate>Fri, 01 Nov 2013 12:40:14 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-11-01-usando-mysql-con-node-js/</guid>
+      <description>Imaginémonos que deseamos usar MySQL en un proyecto con node.js, después de todo MySQL es de lejos la DB relacional más usada ¿cómo hacerlo?. Pues bien aquí les dejo un pequeño tutorial que describe como usar la base de datos MySQL en un proyecto node.js usando el framework express. Este tutorial asume que ya tiene instalado node.js y MySQL ya sea localmente o en su servidor de desarrollo, no interesa el sistema operativo en teoría.</description>
+    </item>
+    
+    <item>
+      <title>Cómo usar node.js en producción</title>
+      <link>http://websistente.com/_posts/2013-10-30-como-usar-node-js-en-produccion/</link>
+      <pubDate>Wed, 30 Oct 2013 11:19:20 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-10-30-como-usar-node-js-en-produccion/</guid>
+      <description>node.js es una de las muchas herramienta que trata de dar una solución al clásico problema C10K que aqueja al popular servidor web Apache. Para ello node.js ofrece un modelo de eventos asíncronos, de un sólo hijo de ejecución. Sin embargo la parte del non-blocking que tanto promocionan en el website oficial de node.js asume que lo único que ejecutará node.js seran queries contra un servicio RESTful. Sin embargo en el mundo real una aplicación web es más que queries contra un servicio RESTful y es por ello que si dejamos que node.</description>
+    </item>
+    
+    <item>
+      <title>Single Page Application (SPA) una tendencia creciente</title>
+      <link>http://websistente.com/_posts/2013-10-29-single-page-application-spa-una-tendencia-creciente/</link>
+      <pubDate>Tue, 29 Oct 2013 09:22:45 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-10-29-single-page-application-spa-una-tendencia-creciente/</guid>
+      <description>Singla Page Application (SPA) o Single Page Interface (SPI) es una aplicación web (web app) o sitio web que sólo carga la página web una sóla vez y desde alli renderiza los objetos que contituyen la página basado en las acciones del usuario, es decir el único flujo entre el servidor y la página web son datos. La llegada de tecnologías que permiten enviar datos directamente al navegador como AJAX hicieron posible el nacimiento de las SPA, pero ha sido la llegada de node.</description>
+    </item>
+    
+    <item>
+      <title>¿Es la web en tiempo real el futuro?</title>
+      <link>http://websistente.com/_posts/2013-10-28-es-la-web-en-tiempo-real-el-futuro/</link>
+      <pubDate>Mon, 28 Oct 2013 01:24:09 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-10-28-es-la-web-en-tiempo-real-el-futuro/</guid>
+      <description>La web en tiempo real es algo que millones de personas ven todos los días en sus aplicaciones favoritas, pero que la mayoría no se da cuenta de dicha funcionalidad. Empresas como Facebook y Twitter usan los datos en tiempo real para actualizar los flujos de actividad sus usuario, lo que resulta en una experiencia que se siente menos estática y más como la mensajería instantánea.Este nuevo paradigma implica enviar datos a los usuarios en lugar de que sea sean las aplicaciones las que busquen actualizaciones periódicamente.</description>
+    </item>
+    
+    <item>
+      <title>Usando PHP en Heroku</title>
+      <link>http://websistente.com/_posts/2013-07-19-usando-php-en-heroku/</link>
+      <pubDate>Fri, 19 Jul 2013 10:56:44 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-07-19-usando-php-en-heroku/</guid>
+      <description>Aunque muchos no lo saben y Heroku no lo publicita es posible desplegar aplicaciones PHP o Perl en el servicio PaaS de Heroku. Claro que hay algunas limitaciones, la primera es que MySQL no es la base de datos relacional que ofrece la plataforma, sino que los es PostgreSQL. Esto hace que algunas muy populares webapps como WordPress por ejemplo no puedan ser deplegadas directamente en Heroku y tal vez es la razón por la cual no se publicita mucho el soporte a PHP.</description>
+    </item>
+    
+  </channel>
+</rss>

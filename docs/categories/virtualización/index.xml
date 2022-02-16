@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualización on Websistente</title>
+    <link>http://websistente.com/categories/virtualizaci%C3%B3n/</link>
+    <description>Recent content in Virtualización on Websistente</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-pe</language>
+    <lastBuildDate>Fri, 10 Oct 2014 12:29:09 -0400</lastBuildDate><atom:link href="http://websistente.com/categories/virtualizaci%C3%B3n/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker y la revolución de los containers</title>
+      <link>http://websistente.com/_posts/2014-10-10-docker-y-la-revolucion-de-los-containers/</link>
+      <pubDate>Fri, 10 Oct 2014 12:29:09 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2014-10-10-docker-y-la-revolucion-de-los-containers/</guid>
+      <description>Docker es una plataforma open source para desarrolladores y sysadmin que permite crear, distriubuir y correr aplicaciones de forma consistente independiente de la configuración del OS y el harware que lo contenga. El proyecto Docker consiste de dos partes &amp;ldquo;Docker Engine&amp;rdquo; que es un runtime ligero y portable (lo que instalamos en nuestro servidor) con un conjunto de herramientas que nos permiten crear, iniciar y detener los contenedores. La otra parte del proyecto es &amp;ldquo;Docker Hub&amp;rdquo;, que es un repositorio en la nube a través del cual podemos compartir los contenedores que hemos creado, si es que así lo queremos.</description>
+    </item>
+    
+    <item>
+      <title>Una introducción a la virtualización</title>
+      <link>http://websistente.com/_posts/2013-05-30-una-introduccion-a-la-virtualizacion/</link>
+      <pubDate>Thu, 30 May 2013 09:34:43 -0400</pubDate>
+      
+      <guid>http://websistente.com/_posts/2013-05-30-una-introduccion-a-la-virtualizacion/</guid>
+      <description>Todo lo que conocemos hoy como Cloud Computing (la tan famosa &amp;ldquo;nube&amp;quot;), no existiría si no se hubiera creado la &amp;ldquo;virtualización&amp;rdquo;. La virtualización, es la creación de una computadora a través de software, en otras palabras en vez de usar chips y ponerlos juntos para crear una aquitectura de computacional, se crean un programa que simula/emula esos chips. De alli que la virtualización comenzara con la emulación de arquitecturas antiguas a través de una solución software que nos permite correr todos los programas existentes para la arquitectura que emulamos.</description>
+    </item>
+    
+  </channel>
+</rss>

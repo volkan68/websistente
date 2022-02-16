@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Cómo usar node.js en producción - Websistente</title>
+  <meta name="description" content="node.js es una de las muchas herramienta que trata de dar una solución al clásico problema C10K que aqueja al popular servidor web Apache. Para ello node.js ofrece un modelo de eventos asíncronos, de un sólo hijo de ejecución. Sin embargo la parte del non-blocking que tanto promocionan en el website oficial de node.js asume que lo único que ejecutará node.js seran queries contra un servicio RESTful. Sin embargo en el mundo real una aplicación web es más que queries contra un servicio RESTful y es por ello que si dejamos que node."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Websistente",
+    
+    "url": "http:\/\/websistente.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/websistente.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/websistente.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/websistente.com\/_posts\/2013-10-30-como-usar-node-js-en-produccion\/",
+          "name": "Cómo usar node.js en producción"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "volkan68"
+  },
+  "headline": "Cómo usar node.js en producción",
+  "description" : "node.js es una de las muchas herramienta que trata de dar una solución al clásico problema C10K que aqueja al popular servidor web Apache. Para ello node.js ofrece un modelo de eventos asíncronos, de un sólo hijo de ejecución. Sin embargo la parte del non-blocking que tanto promocionan en el website oficial de node.js asume que lo único que ejecutará node.js seran queries contra un servicio RESTful. Sin embargo en el mundo real una aplicación web es más que queries contra un servicio RESTful y es por ello que si dejamos que node.",
+  "inLanguage" : "es",
+  "wordCount":  1505 ,
+  "datePublished" : "2013-10-30T11:19:20",
+  "dateModified" : "2013-10-30T11:19:20",
+  "image" : "http:\/\/websistente.com\/",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "http:\/\/websistente.com\/_posts\/2013-10-30-como-usar-node-js-en-produccion\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/websistente.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/websistente.com\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Cómo usar node.js en producción" />
+<meta property="og:description" content="node.js es una de las muchas herramienta que trata de dar una solución al clásico problema C10K que aqueja al popular servidor web Apache. Para ello node.js ofrece un modelo de eventos asíncronos, de un sólo hijo de ejecución. Sin embargo la parte del non-blocking que tanto promocionan en el website oficial de node.js asume que lo único que ejecutará node.js seran queries contra un servicio RESTful. Sin embargo en el mundo real una aplicación web es más que queries contra un servicio RESTful y es por ello que si dejamos que node.">
+<meta property="og:url" content="http://websistente.com/_posts/2013-10-30-como-usar-node-js-en-produccion/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Websistente" />
+
+  <meta name="twitter:title" content="Cómo usar node.js en producción" />
+  <meta name="twitter:description" content="node.js es una de las muchas herramienta que trata de dar una solución al clásico problema C10K que aqueja al popular servidor web Apache. Para ello node.js ofrece un modelo de eventos asíncronos, de …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.92.1" />
+  <link rel="alternate" href="http://websistente.com/index.xml" type="application/rss+xml" title="Websistente"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://websistente.com/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://websistente.com/css/syntax.css" /><link rel="stylesheet" href="http://websistente.com/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://websistente.com/">Websistente</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Podcast" href="/podcast">Podcast</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Autor" href="/volkan-rivera">Autor</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="_posts-heading">
+              
+                <h1>Cómo usar node.js en producción</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p><a href="http://nodejs.org/">node.js</a> es una de las muchas herramienta que trata de dar una solución al clásico problema <a href="http://en.wikipedia.org/wiki/C10k_problem">C10K</a> que aqueja al popular servidor web Apache. Para ello node.js ofrece un modelo de eventos asíncronos, de un sólo hijo de ejecución. Sin embargo la parte del non-blocking que tanto promocionan en el website oficial de node.js asume que lo único que ejecutará node.js seran queries contra un servicio <a href="http://es.wikipedia.org/wiki/Representational_State_Transfer">RESTful</a>. Sin embargo en el mundo real una aplicación web es más que queries contra un servicio RESTful y es por ello que si dejamos que node.js se haga cargo del envio de los archivos css, html, las imágnes y todos los otros objetos que constituyen una página web la parte del non-blocking no se cumple y difícilmente el servicio pueda escalar a más de unos cuantos cientos de clientes simultáneos, de alli la razón de muchas de las críticas que ha recibido node.js. Cuál es la solución usar un servidor web que se haga cargo de servir el contenido estático de nuestra aplicación web y para no ello no hay nada mejor que el pequeño y ágil Nginx.</p>
+<p>En este post les explicaré como configurar node.js y Nginx en un servidor Ubuntu 12.04 para correr una aplicación desarrollada en node.js. Por favor tengan en cuenta que estos pasos también pueden ser seguidos en Debian (omitiendo el comando sudo, siempre y cuando estemos logueados como root), si desea hacer lo mismo con distribuciones basadas en RPM como Centos o Fedora entonces siga las ideas generales pero no podrá copiar y pegar directamente los comando listados en este tutorial.</p>
+<p><!-- raw HTML omitted -->Lo primero que debemos hacer es actualizar nuestro Ubuntu para asegurarnos de que estamos usando lo repositorios de paquetes más nuevos y luego procedemos a instalar todos los paquetes que vamos a requerir para poder instalar nuestro node.js que será instalado desde el código fuente:<!-- raw HTML omitted --></p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+	# Para asegurarnos de que estamos usando los repositrios más nuevos.
+	sudo apt-get update
+
+	# Todos los paquetes que vamos a necesitar.
+	sudo apt-get install build-essential libssl-dev mysql-server nano git curl htop links
+</code></pre><p><!-- raw HTML omitted -->Para instalar node.js debemos descargar el código fuente desde su <a href="http://nodejs.org/download/">website oficial</a>, desempaquetarlo y luego seguir el clásico ciclo de compilación para tenerlo instalado en nuestro servidor:<!-- raw HTML omitted --></p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+# Crear un nuevo directorio y entrar en él.
+sudo mkdir /opt/node/
+cd /opt/node/
+
+# Descargar el código fuente de node.js.
+# Al momento de escribir este tutorial la versión
+# más nueva fue la 0.10.21.
+sudo wget http://nodejs.org/dist/v0.10.21/node-v0.10.21.tar.gz
+
+# Extraer los archivos del tarball.
+sudo tar xvzf node-v0.10.21.tar.gz
+
+# Hagamos algo de limpueza antes de compilar.
+sudo mv node-v0.10.21/* .
+sudo rm node-v0.10.21.tar.gz
+sudo rm -r node-v0.10.21/
+
+# Ejecutar el `make` y el `make install`.
+# Tener paciencia.
+# La compilación puede demorar algunos minutos.
+sudo make
+sudo make install
+
+# Ejecutar una batería de pruebas para verificar
+# que todo está bien.
+sudo make test
+
+# Verificar que nuestra versión es la correcta y
+# no tenemos interferencia de versiones anteriores.
+node -v
+</code></pre><p>Con el node.js ya compilado debemos de crear una sencilla aplicación de prueba que sólo dira &ldquo;Hola Mundo!!!&rdquo; cada vez que apuntemos el browser a ella, aquí los pasos previos a creación de nuesta primera aplicación node.js:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+# Crear un directorio para nuestras aplicaciones web.
+sudo mkdir /var/www/
+cd /var/www/
+
+# Crear un directorio para nuestra primera aplicación.
+sudo mkdir holamundo/
+cd holamundo/
+
+# Crear nuestro archivo de servidor.
+pico server.js
+</code></pre><p>Ahora que pico esta abierto copie y pegue este código fuente en JavaScript que justamente tiene por misión responder con un &ldquo;Hola Mundo!!!&rdquo; a todas las solicitudes que reciba:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hola Mundo!!!\n');
+}).listen(3000);
+console.log('Server running at http://127.0.0.1:3000/');
+</code></pre><p>Si no tiene experiencia con pico, para grabar debe precional la tecla &lt;Control&gt; y la letra &ldquo;O&rdquo; al mismo tiempo, luego para salir debe presional la tecla &lt;Control&gt; y la letra &ldquo;X&rdquo; al mismo tiempo.</p>
+<p>Ahora para asegurarnos que nuestra aplicación permanezca corriendo para siempre e incluso se recupere luego de que por alguna razón el kernel termina el proceso instalaremos un módulo node.js llamado <a href="https://github.com/nodejitsu/forever">Forever</a> (por siempre), un nombre muy conveniente para la funcionalidad que realiza:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+# Instalar el módulo Forever globalmente.
+sudo npm install -g forever
+
+# Iniciar nuesta webapp.
+forever start -l hello-world.log server.js
+
+# Ver el log de la actividad de nuesta webapp
+tail -f ~/.forever/hello-world.log
+</code></pre><p>Ahora abra el navegador en modo texto llamado &ldquo;links&rdquo; usando este comando:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+	links http://127.0.0.1:3000
+</code></pre><p>Y debería ver el mensaje &ldquo;Hola Mundo!!!&rdquo; que indica que la aplicación node.js está corriendo y aceptando peticiones sólo desde el mismo servidor, esto lo hacemos por seguridad para evitar que algún usuario mal intencionado intente un ataque directo al node.js. Para salir de &ldquo;links&rdquo; presione las teclas &lt;ESC&gt;+F+X y al mensaje que le aparezca digale &ldquo;Y&rdquo; o acepte.</p>
+<p>Ahora intalemos Nginx, que para el caso de nuesto Ubuntu 12.04 es muy sencillo ya que los paquetes están disponibles en los repositorios de la distribución:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+sudo apt-get install nginx
+</code></pre><p>Para ver los archivos de log (bitácora) podemos usar el comando &ldquo;tail&rdquo; que por defecto nos muestra las 10 últimas líneas de un archivo de texto (todos los logs son archivos de texto), de esta forma sabremos si no hay errores reportados:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+# Ver el logs de los accesos.
+tail -f /var/log/nginx/access.log
+
+# Ver el log de los errores.
+tail -f /var/log/nginx/error.log
+</code></pre><p>Ahora debemos configurar nuestro Nginx para que actue como un porxy inverso y redireccione todas las solicitudes que cumplan una regla determinada a nuestra aplicación node.js, en primer lugar debemos hacer una copia de back-up de la actual configuración y luego crearemos la nuestra:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+# Backup de la configuración por defecto
+mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+
+# Crear una nueva configuración.
+pico /etc/nginx/sites-available/default
+</code></pre><p>Si ya tiene el editor de texto abierto en su terminal, por favor copie y pegue este archivo de configuración (recuere, para grabar &lt;Control&gt;+O y para salir &lt;Control&gt;+X):</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+# The upstream module is the link between Node.js and Nginx.
+# Upstream is used for proxying requests to other servers.
+# All requests for / get distributed between any of the servers listed.
+upstream helloworld {
+  # Set up multiple Node.js webservers for load balancing.
+  # max_fails refers to number of failed attempts
+  # before server is considered inactive.
+  # weight priorities traffic to server. Ex. weight=2 will recieve
+  # twice as much traffic as server with weight=1
+  server 127.0.0.1:3000 max_fails=0 fail_timeout=10s weight=1;
+  # server 127.0.0.1:3001 max_fails=0 fail_timeout=10s weight=1;
+  # server 127.0.0.1:3002 max_fails=0 fail_timeout=10s weight=1;
+  # server 127.0.0.1:3003 max_fails=0 fail_timeout=10s weight=1;
+ 
+  # Send visitors back to the same server each time.
+  ip_hash;
+ 
+  # Enable number of keep-alive connections.
+  keepalive 512;
+}
+ 
+server {
+  listen 80;
+  listen [::]:80 default_server ipv6only=on;
+ 
+  # Index files.
+  index index.html;
+ 
+  # Domain names.
+  # Make sure to set the A Record on your domain's DNS settings to your server's IP address.
+  # You can test if was set properly by using the `dig` command: dig yourdomain.com
+  server_name yourdomain.com www.yourdomain.com;
+ 
+  # Timeout for closing keep-alive connections.
+  keepalive_timeout 10;
+  
+  # Enable gzip compression.
+  gzip on;
+  gzip_http_version 1.1;
+  gzip_vary on;
+  gzip_comp_level 6;
+  gzip_proxied any;
+  gzip_buffers 16 8k;
+  gzip_disable &quot;MSIE [1-6]\.(?!.*SV1)&quot;;
+  
+  # Max upload size.
+  # client_max_body_size 16M;
+ 
+  # Change access and error log files.
+  # access_log /var/log/nginx/yourdomain.com/access.log;
+  # error_log /var/log/nginx/yourdomain.com/error.log;
+ 
+  # Custom error page.
+  # error_page 404 maintenance.html;
+  # error_page 500 502 503 504 maintenance.html;
+  
+  # location /maintenance.html {
+  #  root /var/www;
+  # }
+ 
+  location / {
+    # Set this to your upstream module.
+    proxy_pass http://helloworld;
+    # Proxy headers.
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $host;
+    proxy_set_header X-NginX-Proxy true;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection &quot;upgrade&quot;;
+    proxy_cache_bypass $http_upgrade;
+    proxy_http_version 1.1;
+    proxy_redirect off;
+    # Go to next upstream after if server down.
+    proxy_next_upstream error timeout http_500 http_502 http_503 http_504;
+    proxy_connect_timeout 5s;
+    # Gateway timeout.
+    proxy_read_timeout 20s;
+    proxy_send_timeout 20s;
+    # Buffer settings.
+    proxy_buffers 8 32k;
+    proxy_buffer_size 64k;
+  }
+ 
+  # Enable caching of static files.
+  # location ~* \.(css|js|gif|jpe?g|png)$ {
+  #  expires 168h;
+  #  add_header Pragma public;
+  #  add_header Cache-Control &quot;public, must-revalidate, proxy-revalidate&quot;;
+  # }
+  
+  # Don't cache html files.
+  # location ~* \.html$ {
+  #  expires -1;
+  # }
+}
+</code></pre><p>Despues de que ya haga grabado y salido del archivo de configuración del Nginx, por favor recargue la configuración del servidor web usando este comando:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+sudo service nginx reload
+</code></pre><p>Si ha seguido los pasos correctamente, sería posible en este momento que apuntando su navegador a la IP pública de su servidor web vea el &ldquo;<!-- raw HTML omitted -->Hola Mundo!!!<!-- raw HTML omitted -->&rdquo;. Esta configuración puede ser modificada para permitir distribuir la carga entre &ldquo;X&rdquo; instancias de node.js, recuerde que aunque su servidor físico o virtual tenga múltiples &ldquo;cores&rdquo; (núcleos), node.js sólo usara uno y en caso desear usar todo ese poder de computo, Ud. debería tener varias instancias de la aplicación corriendo en direfentes puertos, por regla general nunca corra más instancias de node.js que el número de núcleos en su servidor menos uno, de esa forma evitará que haya un conflicto entre ellos y compitan por el mismo recurso (CPU).</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://websistente.com/_posts/2013-10-29-single-page-application-spa-una-tendencia-creciente/" data-toggle="tooltip" data-placement="top" title="Single Page Application (SPA) una tendencia creciente">&larr; Artículo anterior</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://websistente.com/_posts/2013-10-31-mongodb-es-facil/" data-toggle="tooltip" data-placement="top" title="MongoDB es fácil">Artículo siguiente &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2014
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://websistente.com/">Websistente</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.92.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://websistente.com/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://websistente.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

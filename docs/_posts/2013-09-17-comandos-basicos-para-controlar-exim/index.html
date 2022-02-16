@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Comandos básicos para controlar Exim - Websistente</title>
+  <meta name="description" content="Exim es el servidor de correo usado por defecto en Debian, la distribución que uso en la mayoría de mis proyectos. Exim no es tan popular como Postfix o Sendmail, pero desde mi punto de vista resulta mucho más robusto y escalable que los dos anteriores, pero como dice el refran en gustos y colores no han escrito los autores. Este post contiene los comando básicos que se pueden usar para gestionar la cola de correos de Exim en las operaciones, espero que les sea de utilidad en caso de que les toque lidiar con un VPS debian."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Websistente",
+    
+    "url": "http:\/\/websistente.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/websistente.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/websistente.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/websistente.com\/_posts\/2013-09-17-comandos-basicos-para-controlar-exim\/",
+          "name": "Comandos básicos para controlar exim"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "volkan68"
+  },
+  "headline": "Comandos básicos para controlar Exim",
+  "description" : "Exim es el servidor de correo usado por defecto en Debian, la distribución que uso en la mayoría de mis proyectos. Exim no es tan popular como Postfix o Sendmail, pero desde mi punto de vista resulta mucho más robusto y escalable que los dos anteriores, pero como dice el refran en gustos y colores no han escrito los autores. Este post contiene los comando básicos que se pueden usar para gestionar la cola de correos de Exim en las operaciones, espero que les sea de utilidad en caso de que les toque lidiar con un VPS debian.",
+  "inLanguage" : "es",
+  "wordCount":  1094 ,
+  "datePublished" : "2013-09-17T10:36:13",
+  "dateModified" : "2013-09-17T10:36:13",
+  "image" : "http:\/\/websistente.com\/",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "http:\/\/websistente.com\/_posts\/2013-09-17-comandos-basicos-para-controlar-exim\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/websistente.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/websistente.com\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Comandos básicos para controlar Exim" />
+<meta property="og:description" content="Exim es el servidor de correo usado por defecto en Debian, la distribución que uso en la mayoría de mis proyectos. Exim no es tan popular como Postfix o Sendmail, pero desde mi punto de vista resulta mucho más robusto y escalable que los dos anteriores, pero como dice el refran en gustos y colores no han escrito los autores. Este post contiene los comando básicos que se pueden usar para gestionar la cola de correos de Exim en las operaciones, espero que les sea de utilidad en caso de que les toque lidiar con un VPS debian.">
+<meta property="og:url" content="http://websistente.com/_posts/2013-09-17-comandos-basicos-para-controlar-exim/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Websistente" />
+
+  <meta name="twitter:title" content="Comandos básicos para controlar Exim" />
+  <meta name="twitter:description" content="Exim es el servidor de correo usado por defecto en Debian, la distribución que uso en la mayoría de mis proyectos. Exim no es tan popular como Postfix o Sendmail, pero desde mi punto de vista resulta …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.92.1" />
+  <link rel="alternate" href="http://websistente.com/index.xml" type="application/rss+xml" title="Websistente"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://websistente.com/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://websistente.com/css/syntax.css" /><link rel="stylesheet" href="http://websistente.com/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://websistente.com/">Websistente</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Podcast" href="/podcast">Podcast</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Autor" href="/volkan-rivera">Autor</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="_posts-heading">
+              
+                <h1>Comandos básicos para controlar Exim</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p><!-- raw HTML omitted --><a href="http://es.wikipedia.org/wiki/Exim">Exim</a> es el servidor de correo usado por defecto en Debian, la distribución que uso en la mayoría de mis proyectos. Exim no es tan popular como Postfix o Sendmail, pero desde mi punto de vista resulta mucho más robusto y escalable que los dos anteriores, pero como dice el refran en gustos y colores no han escrito los autores. Este post contiene los comando básicos que se pueden usar para gestionar la cola de correos de Exim en las operaciones, espero que les sea de utilidad en caso de que les toque lidiar con un VPS debian.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Exim utiliza el message-ID para referirse a los mensajes en su cola, éste message-ID esta formado por caracteres alfanuméricos con mayúsculas y minúsculas (reconoce la diferencia entre ellas), y su formato es como este: XXXXX-YYYYYY-ZZ. La mayoría de los comandos relacionados con la gestión de la cola y el registro de estos mensajes utiliza estos identificadores de mensaje.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Existen tres archivos por cada mensaje en el directorio de cola. Si usted está tratando con estos archivos a mano, en lugar de utilizar los comandos exim apropiadas como se detalla a continuación, asegúrese de editra/remover todos y no dejar a Exim con restos de mensajes en la cola. Evite el manejo de la cola manualmente porque esto podría creale problemas a la larga, en lugar de ello use los comandos descritos más abajo.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Los archivos en el directorio <!-- raw HTML omitted --><strong>/var/spool/exim/msglog</strong><!-- raw HTML omitted --> contienen la información de registro (log) para cada mensaje y se nombran igual que el message-ID. Los archivos en el directorio <!-- raw HTML omitted --><strong>/var/spool/exim/</strong><!-- raw HTML omitted --> tienen el nombre del message-ID, más un sufijo que denota si es la cabecera del mensaje (-H) o el cuerpo del mensajes (-D). Estos directorios pueden contener subdirectorios más hash para hacer frente a las colas de correo realmente grandes, así que no esperes todo lo que aparezca siempre directamente en la parte superior en los directorios <!-- raw HTML omitted --><strong>/var/spool/exim/</strong><!-- raw HTML omitted --> o <!-- raw HTML omitted --><strong>/var/spool/exim/msglog</strong><!-- raw HTML omitted -->, cualquier búsqueda usando grep tendrá que ser recursivas. <!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>Obtener información básica sobre la cola</strong><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Obtener el número de mensaje en la cola:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><strong><!-- raw HTML omitted --><!-- raw HTML omitted -->root@localhost# exim -bpc<!-- raw HTML omitted --><!-- raw HTML omitted --></strong><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Obtener un reporte de los mensajes en la cola (hora en que el mensaje entro a la cola, tamaño, message-ID, remitente, destinatario):<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -bp</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Obtener un reporte resumen de los mensajes que hay en la cola (cantidad, espacio de disco usado, cuánto tiempo hace desde que llegó el más antiguo, cuánto desde que llegó el mensaje más reciente, todo desglosado por dominios y mostrando los totales):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -bp | exiqsumm</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Obtener exactamente que está procesando Exim en este momento:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiwhat</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Probar como Exim está ruteando los correos a una dirección de correo específica:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -bt <a href="mailto:alias@localdomain.com">alias@localdomain.com</a><br>
+<a href="mailto:user@thishost.com">user@thishost.com</a><br>
+&lt;– <a href="mailto:alias@localdomain.com">alias@localdomain.com</a><br>
+router = localuser, transport = local_delivery<br>
+root@localhost# exim -bt <a href="mailto:user@thishost.com">user@thishost.com</a><br>
+<a href="mailto:user@thishost.com">user@thishost.com</a><br>
+router = localuser, transport = local_delivery<br>
+root@localhost# exim -bt <a href="mailto:user@remotehost.com">user@remotehost.com</a><br>
+router = lookuphost, transport = remote_smtp<br>
+host mail.remotehost.com [1.2.3.4] MX=0</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Ejecutar una transacción SMTP desde la línea de comando, como si esta fuera hecha desde el IP asignado al Exim. Este comando nos mostrará todos los checks, ACL y filtrs que son aplicados a ese host en particular. Tenga en cuenta que este mensaje no enviara un mensaje de la cola.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -bh 192.168.11.22</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Display all of Exim&rsquo;s configuration settings:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -bP</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>Buscando en la cola con exiqgrep</strong><!-- raw HTML omitted -->:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Exim incluye una utilidad que es bastante agradable para buscar patrones a través de la cola, llamada <strong>exiqgrep</strong>. Es bueno aprender a utilizarla y ponerla en práctica. Si usted no la está usando y si usted no está familiarizado con las distintas banderas que utiliza, puede que probablemente esté haciendo las cosas de la manera difícil, como entubar (pipe) <code>exim-pb</code> a otros programas como awk, grep, cut, o <code>wc – l </code>. No hay que hacernos la vida más difícil de lo que ya es.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Existen varios indicadores de que el control del comando exiqgrep para buscar en los mensajes de la cola que coincidan con cierto patrón de búsqueda. Estos controls se pueden combinar para llegar a una búsqueda muy particular.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Use el indicador -f para buscar en la cola por mensajes de un remitente específico:<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -f [luser]@domain</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Use el indicador -r para buscar en la cola por mensajes de un destinatario específico o mensajes enviados a un dominio específico:<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -r [luser]@domain</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Use -o to print messages older than the specified number of seconds. For example, messages older than 1 day:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -o 86400 […]</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Use -y to print messages that are younger than the specified number of seconds. For example, messages less than an hour old:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -y 3600 […]</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Use -s to match the size of a message with a regex. For example, 700-799 bytes:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -s &lsquo;^7..$&rsquo; […]</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Use -z to match only frozen messages, or -x to match only unfrozen messages.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->There are also a few flags that control the display of the output.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Use -i to print just the message-id as a result of one of the above two searches:<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -i [ -r | -f ] …</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Use -c to print a count of messages matching one of the above searches:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -c …</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Print just the message-id of the entire queue:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -i</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><strong><!-- raw HTML omitted -->Manejando la cola<!-- raw HTML omitted -->:</strong><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->El binario principal de exim (/usr/sbin/exim) es usado con varios flags para hacer que las cosas pasen en la cola de mensajes.La mayoría de las veces se requiere que uno o más message-ID se especifique en la línea de comandos, es aquí donde el comando &ldquo;<!-- raw HTML omitted --><strong>exiqgrep -i</strong><!-- raw HTML omitted -->&rdquo; descrito anteriormente se vuelve de gran utilidad.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Iniciar el procesamiento de la cola de mensajes:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong><!-- raw HTML omitted -->root@localhost# exim -q -v<!-- raw HTML omitted --></strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Inicial el proecesamiento de la cola de mensajes sólo para los envios locales:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -ql -v</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Borrar un mensaje de la cola:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mrm &lt;message-id&gt; [</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> … ]<!-- raw HTML omitted --><!-- raw HTML omitted --></strong><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Congelar un mensaje de la cola:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mf &lt;message-id&gt; [</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> … ]<!-- raw HTML omitted --><!-- raw HTML omitted --></strong><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Descongelar un mensaje de la cola:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mt &lt;message-id&gt; [</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> … ]<!-- raw HTML omitted --><!-- raw HTML omitted --></strong><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Despachar un mensaje, ya sea que este esté congelado o no, o que haya o no alcanzado el número máximo de reintentos:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -M &lt;message-id&gt; [</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> … ]<!-- raw HTML omitted --><!-- raw HTML omitted --></strong><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Despachar un mensaje, pero sólo si el momento de reenvío se ha alcanzado:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mc &lt;message-id&gt; [</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> … ]<!-- raw HTML omitted --><!-- raw HTML omitted --></strong><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Forzar un mensaje a fallar y enviar un mensaje de rebote como &ldquo;cancelled by administrator&rdquo;:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mg &lt;message-id&gt; [</strong> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong><!-- raw HTML omitted --><!-- raw HTML omitted --> … ]<!-- raw HTML omitted --><!-- raw HTML omitted --></strong><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Borra todos los mensajes congelados:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -z -i | xargs exim -Mrm</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Borra todos los mensajes más antiguos que cinco dias (86400 * 5 = 432000 seconds):<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -o 432000 -i | xargs exim -Mrm</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Congelar todos los mensajes en la cola para un remitente dado:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exiqgrep -i -f <a href="mailto:luser@example.tld">luser@example.tld</a> | xargs exim -Mf</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Ver la cabecera de un mensaje:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mvh &lt;message-id&gt;</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Ver el cuerpo de un mensaje:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mvb &lt;message-id&gt;</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Ver los logs de un mensaje:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mvl &lt;message-id&gt;</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Añadir un destinatario a un mensaje:<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mar &lt;message-id&gt; &lt;address&gt; [</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>…]</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><strong>root@localhost# exim -Mes &lt;message-id&gt; &lt;address&gt;</strong><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://websistente.com/_posts/2013-07-19-usando-php-en-heroku/" data-toggle="tooltip" data-placement="top" title="Usando PHP en Heroku">&larr; Artículo anterior</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://websistente.com/_posts/2013-10-28-es-la-web-en-tiempo-real-el-futuro/" data-toggle="tooltip" data-placement="top" title="¿Es la web en tiempo real el futuro?">Artículo siguiente &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2014
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://websistente.com/">Websistente</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.92.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://websistente.com/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://websistente.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

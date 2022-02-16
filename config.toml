@@ -1,3 +1,21 @@
 baseURL = 'http://websistente.com/'
 languageCode = 'es-pe'
 title = 'Websistente'
+theme = 'beautifulhugo'
+
+defaultcontentlanguage = "es"
+paginate = 20
+
+# Menu links
+[[menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "/"
+[[menu.main]]
+  name = "Podcast"
+  weight = 2
+  url = "podcast"
+[[menu.main]]
+  name = "Autor"
+  weight = 3
+  url = "volkan-rivera"

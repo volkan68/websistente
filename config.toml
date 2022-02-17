@@ -6,6 +6,9 @@ theme = 'beautifulhugo'
 defaultcontentlanguage = "es"
 paginate = 20
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 # Menu links
 [[menu.main]]
   name = "Blog"

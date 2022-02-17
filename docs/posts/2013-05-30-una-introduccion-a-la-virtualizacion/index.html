@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Una introducción a la virtualización - Websistente</title>
+  <meta name="description" content="Todo lo que conocemos hoy como Cloud Computing (la tan famosa &ldquo;nube&quot;), no existiría si no se hubiera creado la &ldquo;virtualización&rdquo;. La virtualización, es la creación de una computadora a través de software, en otras palabras en vez de usar chips y ponerlos juntos para crear una aquitectura de computacional, se crean un programa que simula/emula esos chips. De alli que la virtualización comenzara con la emulación de arquitecturas antiguas a través de una solución software que nos permite correr todos los programas existentes para la arquitectura que emulamos."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Websistente",
+    
+    "url": "http:\/\/websistente.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/websistente.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/websistente.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/websistente.com\/posts\/2013-05-30-una-introduccion-a-la-virtualizacion\/",
+          "name": "Una introducción a la virtualización"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "volkan68"
+  },
+  "headline": "Una introducción a la virtualización",
+  "description" : "Todo lo que conocemos hoy como Cloud Computing (la tan famosa \u0026ldquo;nube\u0026quot;), no existiría si no se hubiera creado la \u0026ldquo;virtualización\u0026rdquo;. La virtualización, es la creación de una computadora a través de software, en otras palabras en vez de usar chips y ponerlos juntos para crear una aquitectura de computacional, se crean un programa que simula\/emula esos chips. De alli que la virtualización comenzara con la emulación de arquitecturas antiguas a través de una solución software que nos permite correr todos los programas existentes para la arquitectura que emulamos.",
+  "inLanguage" : "es",
+  "wordCount":  1108 ,
+  "datePublished" : "2013-05-30T09:34:43",
+  "dateModified" : "2013-05-30T09:34:43",
+  "image" : "http:\/\/websistente.com\/",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "http:\/\/websistente.com\/posts\/2013-05-30-una-introduccion-a-la-virtualizacion\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/websistente.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/websistente.com\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Una introducción a la virtualización" />
+<meta property="og:description" content="Todo lo que conocemos hoy como Cloud Computing (la tan famosa &ldquo;nube&quot;), no existiría si no se hubiera creado la &ldquo;virtualización&rdquo;. La virtualización, es la creación de una computadora a través de software, en otras palabras en vez de usar chips y ponerlos juntos para crear una aquitectura de computacional, se crean un programa que simula/emula esos chips. De alli que la virtualización comenzara con la emulación de arquitecturas antiguas a través de una solución software que nos permite correr todos los programas existentes para la arquitectura que emulamos.">
+<meta property="og:url" content="http://websistente.com/posts/2013-05-30-una-introduccion-a-la-virtualizacion/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Websistente" />
+
+  <meta name="twitter:title" content="Una introducción a la virtualización" />
+  <meta name="twitter:description" content="Todo lo que conocemos hoy como Cloud Computing (la tan famosa &ldquo;nube&quot;), no existiría si no se hubiera creado la &ldquo;virtualización&rdquo;. La virtualización, es la creación de una …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.92.1" />
+  <link rel="alternate" href="http://websistente.com/index.xml" type="application/rss+xml" title="Websistente"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://websistente.com/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://websistente.com/css/syntax.css" /><link rel="stylesheet" href="http://websistente.com/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://websistente.com/">Websistente</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Podcast" href="/podcast">Podcast</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Autor" href="/volkan-rivera">Autor</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>Una introducción a la virtualización</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Todo lo que conocemos hoy como <a href="http://es.wikipedia.org/wiki/Computaci%C3%B3n_en_la_nube">Cloud Computing</a> (la tan famosa &ldquo;<em><strong>nube</strong></em>&quot;), no existiría si no se hubiera creado la &ldquo;virtualización&rdquo;. La virtualización, es la creación de una computadora a través de software, en otras palabras en vez de usar chips y ponerlos juntos para crear una aquitectura de computacional, se crean un programa que simula/emula esos chips. De alli que la virtualización comenzara con la emulación de arquitecturas antiguas a través de una solución software que nos permite correr todos los programas existentes para la arquitectura que emulamos. Aunque nos cueste creerlo la virtualización/emulación de hardware se remonta a <a href="http://www.everythingvm.com/content/history-virtualization">mediados de los años 60</a>, con IBM realizando investigaciones sobre el tema en el &ldquo;<a href="http://en.wikipedia.org/wiki/Cambridge_Scientific_Center">Cambridge Scientific Center</a>&rdquo;.</p>
+<p>En un principio el <a href="http://es.wikipedia.org/wiki/IBM_PC">IBM/PC</a> fue una computadora monousuario/monotarea de 16 bits y con una RAM máxima de 1 MB (si un megabyte), que se hizo popular por su gran catálogo de software e inició una revolución a tal punto que hizo que la categoría a la que pertenecía &ldquo;<a href="http://es.wikipedia.org/wiki/Microcomputadora">microcomputadoras</a>&rdquo; quedara olvidada y fuera renombrada como &ldquo;Personal Computers&rdquo;, &ldquo;Computadoras Personales&rdquo; o PCs. El mercado creció tanto que la arquitectura PC se extendió en todas direcciones llegando a matar incluso a las famosas &ldquo;<a href="http://es.wikipedia.org/wiki/Minicomputadora">minicomputadoras</a>&rdquo;. Las PCs evolucionaron, se convirtieron en &ldquo;Workstations&rdquo; y &ldquo;Servers&rdquo;, su potencia creció y su costo disminuyó. La antigua y limitada arquitectura PC de 16 bits fue reemplazada por la más poderosa de 32 bits con la introducción del <a href="http://es.wikipedia.org/wiki/Intel_80386">i386</a>, que luego como ya sabemos ha sido superada por la arquitectura multinúcleo de 64 bits de años recientes. Pero, la entonces nueva arquitectura de 32 bits rompió la compatibilidad de hardware con el PC original, con lo cual muchos juegos y aplicaciones dejaron de funcionar, razón por la cual aparecieron emuladores de la arquitectura del PC original entre ellos el más popular fue <a href="http://en.wikipedia.org/wiki/Bochs">Bosh</a>, aunque en la actulidad el emulador más popular es <a href="http://wiki.qemu.org/Main_Page">Qemu</a>.</p>
+<p>El crecimiento exponencial de la potencia del hardware, su abaratamiento y las crecientes necesidades de los departamentos de computo hizo natural que se pensara en particionar la capacidad de computo de los servidores en instancias más pequeñas que serian asignadas por departamentos. Es decir un servidor virtual o VPS (Virtual Private Server) es una máquina virtual que corre independientemente, puede ser reiniciada sin afectar el funcionamiento del host u otros virtuales sobre el mismo host, posee sus propios accesos a la red y librerías. Para todo fin práctico los VPS pueden ser vistos como una máquina real situada en un data center. Visto de este modo la virtualización se entiende mejor como el conjunto de metodologías y técnicas que permiten dividir los recursos de cómputo de una computadora lo suficientemente poderosa llamada server (o servidor) en varios entornos más pequeños llamados máquinas virtuales o VPS.</p>
+<p>En la actualidad son conocidas tres técnicas que permiten la virtualización:</p>
+<p><strong>Virtualización de hardware</strong>: En esta técnica se emula una arquitectura hardware real (como la x86) o ficticia (como la máquina virtual de Java), el software usado para virtualización presenta a las máquinas virtuales una capa de abstracción de hardware que toma control de todos los requerimientos de las máquinas virtuales en lo referente al acceso a los recursos físicos de la máquina que los hospeda (el host). Esta aproximación permite ejecutar cualquier sistema operativo en las máquinas virtuales sin modificación alguna, ya que desde la perspectiva de la máquina virtual se está corriendo sobre una máquina real. Obviamente esta solución introduce una penalización en la performance de la máquina virtual si la comparamos con una máquina real, porque la capa adicional introducida para emular el hardware, conocida como hypervisor (<a href="https://es.wikipedia.org/wiki/Hipervisor">hipervisor</a>) usa recursos del host tambien. Sin embargo la flexibilidad introducida de poder correr muchos sistemas operativos diferentes dentro de un mismo servidor físico han hecho a esta solución una de las más populares. Productos de virtualización que siguen esta técnica son por ejemplo: <a href="http://www.vmware.com/">VMWare</a>, <a href="https://www.virtualbox.org/">VirtualBox</a>, <a href="http://wiki.qemu.org/Main_Page">QEMU</a>, <a href="http://www.citrix.com/products/xenserver/overview.html">XenServer</a>, <a href="http://www.linux-kvm.org/page/Main_Page">KVM</a>, <a href="http://www.microsoft.com/windowsserversystem/virtualserver/">Microsoft Virtual Server</a>, entre otros.</p>
+<p><strong>Paravirtualización</strong>: Esta técnica requiere que los kernel de los sistemas operativos de las máquinas virtuales sean modificados para que en lugar de hacer uso del hardware real, se llame al hypervisor que en este caso recibe el nombre de Virtual Machino Monitor (VMM). La mayor parte del código se corre nativo en cada máquina virtual porque la arquitectura de hardware tanto del host como de los VPS es la misma, sólo los accesos a los dispositivos físicos es interrumpido por el hypervisor y es la razón por la cual el kernel de las máquinas virtuales debe ser modificado para que sepan como tratar estas interrupciones. Esta técnica es mucho más eficiente que la una virtualización de hardware (ya que la mayor parte del código corre directamente sobre el hardware), pero tiene dos claras limitaciones. La primera es que la arquitectura de hardware del host (el servidor) y las máquinas virtuales debe ser la misma. La segunda limitación es que los kernel de las máquinas virtuales deben ser modificados para que puedan reaccionar ante las interrupciones del VMM. Una de las soluciones de paravirtualización más populares actualmente es <a href="http://www.xen.org/products/xenhyp.html">Xen</a> que es usado por ejemplo por Amazon para su producto de computación en la nube <a href="http://aws.amazon.com/ec2/">EC2</a> .</p>
+<p><strong>Virtualización a nivel de Sistema Operativo</strong>: Esta técnica es mucho más restrictiva que la de paravirtualización, sólo permite ejecutar un sólo tipo de sistema operativo. Esto como consecuencia de que sólo existe un kernel para todas las máquinas virtuales, que no son más que entornos aislados a nivel del user-space. De alli que a este técnica usualmente se le llame de containers (contenedores), ya que básicamente cada máquina virtual es un chroot con esteriodes. Casi todas las plataformas Unix tienen un sistema de containers que permiten particionar una máquina física en varias más pequeñas con su propio usuario root, IP y sistema de archivos. La principal limitación de esta técnica es que sólo se puede ejecutar un sólo tipo de kernel (es decir un sólo tipo de sistema operativo), pero ofrece la mayor densisdad de virtuales por server físico. Debido a que la penalización de virtualización es casi inexistente, pueden aprovecharce mucho más los recursos del sistema. Ejemplos de este tipo de virtualización son <a href="http://lxc.sourceforge.net/">LXC</a> y <a href="http://openvz.org/Main_Page">OpenVZ</a> en Linux, <a href="http://www.freebsd.org/doc/handbook/jails.html">Jails</a> en FreeBSD y <a href="http://www.oracle.com/technetwork/articles/servers-storage-admin/zones-containers-virtualization-1880908.html">Zones</a> en Solaris.</p>
+<p>Expuestas ya las principales técnicas de virtualización espero que esto les sea de ayuda cuando decidan que servicio de VPS usaran, como es lógico los VPS más económicos son aquellos que usan virtualización a nivel de sistema operativo como OpenVZ, seguidos de cerca en cuanto a precio por aquellos que usan paravirtualización como Xen PV (paravirtualizado), siendo los más caros usualmente aquellos que ofrecen virtualización de hardware como Xen HVM (Hardware Virtual Machine) o KVM.</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://websistente.com/posts/2013-05-17-bienvenidos-a-websistente/" data-toggle="tooltip" data-placement="top" title="Bienvenidos a Websistente">&larr; Artículo anterior</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://websistente.com/posts/2013-07-19-usando-php-en-heroku/" data-toggle="tooltip" data-placement="top" title="Usando PHP en Heroku">Artículo siguiente &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2014
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://websistente.com/">Websistente</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.92.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://websistente.com/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://websistente.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

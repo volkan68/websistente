@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Desarrollo on Websistente</title>
-    <link>http://websistente.com/categories/desarrollo/</link>
-    <description>Recent content in Desarrollo on Websistente</description>
+    <title>Posts on Websistente</title>
+    <link>http://websistente.com/posts/</link>
+    <description>Recent content in Posts on Websistente</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-pe</language>
-    <lastBuildDate>Thu, 21 Aug 2014 12:46:47 -0400</lastBuildDate><atom:link href="http://websistente.com/categories/desarrollo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Oct 2014 12:29:09 -0400</lastBuildDate><atom:link href="http://websistente.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker y la revolución de los containers</title>
+      <link>http://websistente.com/posts/2014-10-10-docker-y-la-revolucion-de-los-containers/</link>
+      <pubDate>Fri, 10 Oct 2014 12:29:09 -0400</pubDate>
+      
+      <guid>http://websistente.com/posts/2014-10-10-docker-y-la-revolucion-de-los-containers/</guid>
+      <description>Docker es una plataforma open source para desarrolladores y sysadmin que permite crear, distriubuir y correr aplicaciones de forma consistente independiente de la configuración del OS y el harware que lo contenga. El proyecto Docker consiste de dos partes &amp;ldquo;Docker Engine&amp;rdquo; que es un runtime ligero y portable (lo que instalamos en nuestro servidor) con un conjunto de herramientas que nos permiten crear, iniciar y detener los contenedores. La otra parte del proyecto es &amp;ldquo;Docker Hub&amp;rdquo;, que es un repositorio en la nube a través del cual podemos compartir los contenedores que hemos creado, si es que así lo queremos.</description>
+    </item>
+    
     <item>
       <title>¿Qué lenguaje aprender primero?</title>
       <link>http://websistente.com/posts/2014-08-21-que-lenguaje-aprender-primero/</link>
@@ -14,6 +23,24 @@
       
       <guid>http://websistente.com/posts/2014-08-21-que-lenguaje-aprender-primero/</guid>
       <description>Esta es la eterna pregunta de todo novato y cuando es dicha en foros públicos por lo general es seguida por un largo debate entre &amp;ldquo;fundamentalistas&amp;rdquo; que parecen estar hablando más de religión que de una herramienta tecnológica. Desde que las computadoras comenzaron a llegar a las aulas universitarias se han probado diferente paradigmas de programación y con ellos diferentes implementaciones de dichos paradigmas en la forma de lenguajes de programación concretos.</description>
+    </item>
+    
+    <item>
+      <title>Usando CouchDB en nuestro VPS</title>
+      <link>http://websistente.com/posts/2013-11-14-usando-couchdb-en-nuestro-vps/</link>
+      <pubDate>Thu, 14 Nov 2013 10:23:17 -0500</pubDate>
+      
+      <guid>http://websistente.com/posts/2013-11-14-usando-couchdb-en-nuestro-vps/</guid>
+      <description>CouchDBes un sistema gestor de bases de datos orientado a documentos, similar a MongoDB y es una de las muchas alternativas NoSQLexitentes en el mercado. Es decir, los datos no están guardados en tablas y tuplas. Pongamos un ejemplo para entenderlo, imaginen que quieres tener un registro de usuarios, donde cada usuario tiene un nombre, un correo y su edad, cada &amp;ldquo;registro&amp;rdquo; (conjunto de nombre + correo + edad) pasaría a ser un documento diferente en una gran repositorio de documentos, independiente de todos los demás.</description>
+    </item>
+    
+    <item>
+      <title>iftop el «top» para interfaces de red</title>
+      <link>http://websistente.com/posts/2013-11-12-iftop-el-top-para-interfaces-de-red/</link>
+      <pubDate>Tue, 12 Nov 2013 09:26:26 -0500</pubDate>
+      
+      <guid>http://websistente.com/posts/2013-11-12-iftop-el-top-para-interfaces-de-red/</guid>
+      <description>iftop es una herramienta que hace con el tráfico de una interface de red, lo que &amp;ldquo;top&amp;rdquo; hace con el uso de un procesador. Esta herramienta escucha todo el tráfico de red a una interface determinada y nos muestra una tabla que resume el uso de ancho de banda usado por cada par de host o IPs connectadas (servidor/cliente), es muy útil para identificar si estamos recibiendo un ataque desde una IP en particular.</description>
     </item>
     
     <item>
@@ -32,6 +59,15 @@
       
       <guid>http://websistente.com/posts/2013-11-07-como-instalar-ghost-plataforma-de-blog-en-node-js/</guid>
       <description>Aunque WordPress es la plataforma de blog dominante en nuestros días, John O&amp;rsquo;Nolan inició un proyecto kickstarted para crear un sistema de blogging en node.js. Ghost se puso como meta recaudar £ 25,000 (U.S.$ 40,000) para financiar el desarrollo del proyecto y en 29 días recibió £ 196,362 (U.S.$ 314,000), debido a esta gran acogida es que decidió extender el proyecto y no sólo desarrollar un software para blogear escrito en node.</description>
+    </item>
+    
+    <item>
+      <title>Asegurando tu server Ubuntu</title>
+      <link>http://websistente.com/posts/2013-11-06-asegurando-tu-server-ubuntu/</link>
+      <pubDate>Wed, 06 Nov 2013 09:50:51 -0500</pubDate>
+      
+      <guid>http://websistente.com/posts/2013-11-06-asegurando-tu-server-ubuntu/</guid>
+      <description>La seguridad es uno de los puntos a los que debemos prestar mucha atención cuando ponemos un servidor en producción (es decir accesible a través de Internet), aunque no existe una receta mágina que vuelva invulnerable nuestro servidor, existen una serie de medidas básicas de seguridad que deberíamos tener en nuestro servidor para evitar los ataques más comunes y detectar algún intento de intrusión. En este post detallo una serie de medidas básicas para asegurar un servidor Ubuntu 12.</description>
     </item>
     
     <item>
@@ -59,6 +95,15 @@
       
       <guid>http://websistente.com/posts/2013-11-01-usando-mysql-con-node-js/</guid>
       <description>Imaginémonos que deseamos usar MySQL en un proyecto con node.js, después de todo MySQL es de lejos la DB relacional más usada ¿cómo hacerlo?. Pues bien aquí les dejo un pequeño tutorial que describe como usar la base de datos MySQL en un proyecto node.js usando el framework express. Este tutorial asume que ya tiene instalado node.js y MySQL ya sea localmente o en su servidor de desarrollo, no interesa el sistema operativo en teoría.</description>
+    </item>
+    
+    <item>
+      <title>MongoDB es fácil</title>
+      <link>http://websistente.com/posts/2013-10-31-mongodb-es-facil/</link>
+      <pubDate>Thu, 31 Oct 2013 10:42:01 -0400</pubDate>
+      
+      <guid>http://websistente.com/posts/2013-10-31-mongodb-es-facil/</guid>
+      <description>MongoDB es una base de datos NoSQL orientada a documentos que son guardados en una estructura JSON dinámica que es denominada BSON (Binary JSON). Debido a que JSON es un formato de datos familiar para los programodores JavaScript, es que muchos desarrolladores node.js usan esta base de datos para sus proyectos. Otra gran ventaja de MongoDB es que es un proyecto Open Source y por lo tanto es posible de ser necesario modificar el códio.</description>
     </item>
     
     <item>
@@ -90,12 +135,40 @@ Este nuevo paradigma implica enviar datos a los usuarios en lugar de que sea sea
     </item>
     
     <item>
+      <title>Comandos básicos para controlar Exim</title>
+      <link>http://websistente.com/posts/2013-09-17-comandos-basicos-para-controlar-exim/</link>
+      <pubDate>Tue, 17 Sep 2013 10:36:13 -0400</pubDate>
+      
+      <guid>http://websistente.com/posts/2013-09-17-comandos-basicos-para-controlar-exim/</guid>
+      <description>Exim es el servidor de correo usado por defecto en Debian, la distribución que uso en la mayoría de mis proyectos. Exim no es tan popular como Postfix o Sendmail, pero desde mi punto de vista resulta mucho más robusto y escalable que los dos anteriores, pero como dice el refran en gustos y colores no han escrito los autores. Este post contiene los comando básicos que se pueden usar para gestionar la cola de correos de Exim en las operaciones, espero que les sea de utilidad en caso de que les toque lidiar con un VPS debian.</description>
+    </item>
+    
+    <item>
       <title>Usando PHP en Heroku</title>
       <link>http://websistente.com/posts/2013-07-19-usando-php-en-heroku/</link>
       <pubDate>Fri, 19 Jul 2013 10:56:44 -0400</pubDate>
       
       <guid>http://websistente.com/posts/2013-07-19-usando-php-en-heroku/</guid>
       <description>Aunque muchos no lo saben y Heroku no lo publicita es posible desplegar aplicaciones PHP o Perl en el servicio PaaS de Heroku. Claro que hay algunas limitaciones, la primera es que MySQL no es la base de datos relacional que ofrece la plataforma, sino que los es PostgreSQL. Esto hace que algunas muy populares webapps como WordPress por ejemplo no puedan ser deplegadas directamente en Heroku y tal vez es la razón por la cual no se publicita mucho el soporte a PHP.</description>
+    </item>
+    
+    <item>
+      <title>Una introducción a la virtualización</title>
+      <link>http://websistente.com/posts/2013-05-30-una-introduccion-a-la-virtualizacion/</link>
+      <pubDate>Thu, 30 May 2013 09:34:43 -0400</pubDate>
+      
+      <guid>http://websistente.com/posts/2013-05-30-una-introduccion-a-la-virtualizacion/</guid>
+      <description>Todo lo que conocemos hoy como Cloud Computing (la tan famosa &amp;ldquo;nube&amp;quot;), no existiría si no se hubiera creado la &amp;ldquo;virtualización&amp;rdquo;. La virtualización, es la creación de una computadora a través de software, en otras palabras en vez de usar chips y ponerlos juntos para crear una aquitectura de computacional, se crean un programa que simula/emula esos chips. De alli que la virtualización comenzara con la emulación de arquitecturas antiguas a través de una solución software que nos permite correr todos los programas existentes para la arquitectura que emulamos.</description>
+    </item>
+    
+    <item>
+      <title>Bienvenidos a Websistente</title>
+      <link>http://websistente.com/posts/2013-05-17-bienvenidos-a-websistente/</link>
+      <pubDate>Fri, 17 May 2013 09:43:10 -0400</pubDate>
+      
+      <guid>http://websistente.com/posts/2013-05-17-bienvenidos-a-websistente/</guid>
+      <description>Hola a todos.
+Mi nombre es Volkan Rivera, vivo en la ciudad de New York desde hace 11 años y me dedico a la administración de sistemas, este es mi blog técnico que es diferente de mi blog personal que también es o mejor dicho pretendía ser en cierta forma un blog técnico, pero que incluía temas más diversos como mi opinion personal sobre algunos hechos políticos y económicos; consejos sobre emprendimientos digitales y recuerdos personales.</description>
     </item>
     
   </channel>

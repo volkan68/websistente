@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 06 Nov 2013 09:50:51 -0500</lastBuildDate><atom:link href="http://websistente.com/categories/seguridad/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Asegurando tu server Ubuntu</title>
-      <link>http://websistente.com/_posts/2013-11-06-asegurando-tu-server-ubuntu/</link>
+      <link>http://websistente.com/posts/2013-11-06-asegurando-tu-server-ubuntu/</link>
       <pubDate>Wed, 06 Nov 2013 09:50:51 -0500</pubDate>
       
-      <guid>http://websistente.com/_posts/2013-11-06-asegurando-tu-server-ubuntu/</guid>
+      <guid>http://websistente.com/posts/2013-11-06-asegurando-tu-server-ubuntu/</guid>
       <description>La seguridad es uno de los puntos a los que debemos prestar mucha atención cuando ponemos un servidor en producción (es decir accesible a través de Internet), aunque no existe una receta mágina que vuelva invulnerable nuestro servidor, existen una serie de medidas básicas de seguridad que deberíamos tener en nuestro servidor para evitar los ataques más comunes y detectar algún intento de intrusión. En este post detallo una serie de medidas básicas para asegurar un servidor Ubuntu 12.</description>
     </item>
     

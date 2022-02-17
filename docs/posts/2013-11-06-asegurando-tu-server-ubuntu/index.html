@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Asegurando tu server Ubuntu - Websistente</title>
+  <meta name="description" content="La seguridad es uno de los puntos a los que debemos prestar mucha atención cuando ponemos un servidor en producción (es decir accesible a través de Internet), aunque no existe una receta mágina que vuelva invulnerable nuestro servidor, existen una serie de medidas básicas de seguridad que deberíamos tener en nuestro servidor para evitar los ataques más comunes y detectar algún intento de intrusión. En este post detallo una serie de medidas básicas para asegurar un servidor Ubuntu 12."><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Websistente",
+    
+    "url": "http:\/\/websistente.com\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http:\/\/websistente.com\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/websistente.com\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/websistente.com\/posts\/2013-11-06-asegurando-tu-server-ubuntu\/",
+          "name": "Asegurando tu server ubuntu"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "volkan68"
+  },
+  "headline": "Asegurando tu server Ubuntu",
+  "description" : "La seguridad es uno de los puntos a los que debemos prestar mucha atención cuando ponemos un servidor en producción (es decir accesible a través de Internet), aunque no existe una receta mágina que vuelva invulnerable nuestro servidor, existen una serie de medidas básicas de seguridad que deberíamos tener en nuestro servidor para evitar los ataques más comunes y detectar algún intento de intrusión. En este post detallo una serie de medidas básicas para asegurar un servidor Ubuntu 12.",
+  "inLanguage" : "es",
+  "wordCount":  1028 ,
+  "datePublished" : "2013-11-06T09:50:51",
+  "dateModified" : "2013-11-06T09:50:51",
+  "image" : "http:\/\/websistente.com\/",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "http:\/\/websistente.com\/posts\/2013-11-06-asegurando-tu-server-ubuntu\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/websistente.com\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/websistente.com\/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Asegurando tu server Ubuntu" />
+<meta property="og:description" content="La seguridad es uno de los puntos a los que debemos prestar mucha atención cuando ponemos un servidor en producción (es decir accesible a través de Internet), aunque no existe una receta mágina que vuelva invulnerable nuestro servidor, existen una serie de medidas básicas de seguridad que deberíamos tener en nuestro servidor para evitar los ataques más comunes y detectar algún intento de intrusión. En este post detallo una serie de medidas básicas para asegurar un servidor Ubuntu 12.">
+<meta property="og:url" content="http://websistente.com/posts/2013-11-06-asegurando-tu-server-ubuntu/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Websistente" />
+
+  <meta name="twitter:title" content="Asegurando tu server Ubuntu" />
+  <meta name="twitter:description" content="La seguridad es uno de los puntos a los que debemos prestar mucha atención cuando ponemos un servidor en producción (es decir accesible a través de Internet), aunque no existe una receta mágina que …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.92.1" />
+  <link rel="alternate" href="http://websistente.com/index.xml" type="application/rss+xml" title="Websistente"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="http://websistente.com/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://websistente.com/css/syntax.css" /><link rel="stylesheet" href="http://websistente.com/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://websistente.com/">Websistente</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Podcast" href="/podcast">Podcast</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Autor" href="/volkan-rivera">Autor</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>Asegurando tu server Ubuntu</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>La seguridad es uno de los puntos a los que debemos prestar mucha atención cuando ponemos un servidor en producción (es decir accesible a través de Internet), aunque no existe una receta mágina que vuelva invulnerable nuestro servidor, existen una serie de medidas básicas de seguridad que deberíamos tener en nuestro servidor para evitar los ataques más comunes y detectar algún intento de intrusión. En este post detallo una serie de medidas básicas para asegurar un servidor Ubuntu 12.04 independientemente de cual será la apliación a la cual lo destinaremos y de cual es el lugar donde lo hostearemos. Es posible tener configuraciones más seguras basados en el tipo de uso que le daremos al servidor (webapp, mail server, irc, etc.) y el data center o el servicio de nube que usemos, pero dado que las posibilidades serían infinitas, es que he decidido escribir este compendio de reglas mínimas.</p>
+<p><span style="line-height: 1.6em;">Las medidas mínimas de seguridad que debemos tener en nuestro servidor son las siguientes:</span></p>
+<ol>
+<li>Deshabiliatar el acceso de &ldquo;root&rdquo; a través del protocolo SSH y cambiar el puerto por defecto.</li>
+<li>Instalar y configurar un Firewall (ufw es el más simple)</li>
+<li>Asegurar la memoria compartida. Restringir los accesos al shared memory en el /etc/fstab.</li>
+<li>Protegernos contra ataques de fuerza bruta.</li>
+<li>Permitir que el comando su sólo pueda ser usado por el grupo de administradores.</li>
+<li>Asegurar los parámetros de red por defecto en el sysctl.</li>
+<li>Instalar un software para búsqueda de rootkits.</li>
+</ol>
+<p>Cómo conseguir cada uno de estos siete puntos está explicado a continuación:</p>
+<p><span style="font-size:16px;"><u><strong>Deshabiliatar el acceso de &ldquo;root&rdquo;.</strong></u></span></p>
+<p>Para deshabilitar el acceso de root debemos editar el archivo &ldquo;<span style="font-family:courier new,courier,monospace;"><strong>/etc/ssh/sshd_config</strong></span>&rdquo;, buscamos la línea:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>PermitRootLogin yes</strong></span></p>
+<p>Y la reemplazamos por:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>PermitRootLogin no</strong></span></p>
+<p>Ahora para cambiar el puerto debemos buscar esta línea:</p>
+<p><strong><span style="font-family:courier new,courier,monospace;">Port 22</span></strong></p>
+<p>Y reemplazarla por esta otra línea:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>Port 2233</strong></span></p>
+<p>El nuevo puerto puede ser cualquiera en principio pero debemos asegurarnos de no elegir otro que este en uso por nuestro sistema. En este caso en particual he colocado el valor &ldquo;2233&rdquo;, pero ya queda a elección del lector escoger un puerto.</p>
+<p>Una vez guardados los cambios, debemos reiniciar el daemon del ssh con este comando:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>/etc/init.d/ssh restart</strong></span></p>
+<p><span style="font-size:16px;"><u><strong>Instalar y configurar un Firewall.</strong></u></span></p>
+<p>El más simple y obvio de usar en Ubuntu es ufw (<a href="https://wiki.ubuntu.com/UncomplicatedFirewall?action=show&amp;redirect=UbuntuFirewall">Uncomplicated FireWall</a>), por defecto no está instalado asi que lo primero que debemos hacer es instalarlo:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+	apt-get update
+	apt-get instal ufw
+</code></pre><p>Una vez instalado debemos indicarle que puertos debe permitir acceder a las conexiones externas, para ello debemos ejecutar estos comandos:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+ufw enable 
+ufw allow 2233
+ufw allow 80
+ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+80/tcp                     ALLOW       Anywhere
+2233/tcp                   ALLOW       Anywhere
+80/tcp                     ALLOW       Anywhere (v6)
+2233/tcp                   ALLOW       Anywhere (v6)
+</code></pre><p>Con nuestro Firewall habilitado y sólo permitiendo accesos a nuestro servidor web y al ssh en el puerto modificado estamos hemos concluido esta parte. Si deseamos aceptar conexiones entrantes a través de otros puestos sólo debemos hacerlo usando este comando:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>ufw allow &lt;<em>port-number</em>&gt;</strong></span></p>
+<p>Donde <span style="font-family:courier new,courier,monospace;"><strong>&lt;<em>port-number</em>&gt;</strong></span> es el número del puerto en el cual aceptaremos conexiones.</p>
+<p><u><span style="font-size:16px;"><strong>Asegurar la memoria compartida.</strong></span></u></p>
+<p>Básicamente lo que debemos hacer es editar el archivo &ldquo;/etc/fstab&rdquo; y agregar esta línea al final del archivo:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>tmpfs /dev/shm tmpfs defaults,noexec,nosuid 0 0</strong></span></p>
+<p><u><span style="font-size:16px;"><strong>Protegernos contra ataques de fuerza bruta.</strong></span></u></p>
+<p>Para ello podemos usar ya sea <a href="http://denyhosts.sourceforge.net/">denyhosts</a> que bloquea específicamente los ataques de fuerza bruta contra ssh/telnet o <a href="http://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a> que es mucho más flexible y permite bloquer ataques de fuerza bruta contra cualquier servicio ofrecido por nuestro servidor, dado que explicar todos las opciones de configuración de fail2ban tomaría muchas líneas sólo lo mencionamos, aunque recomendamos su instalación especialmente en los casos de servidores de correo con protocolos POP3 o IMAP.</p>
+<p>Para instalar denyhosts sólo debemos seguir estos sencillos pasos:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+	apt-get install denyhosts
+	/etc/init.d/denyhosts restart
+</code></pre><p>Todos los IPs usados para intentar loguearse en el servidor que no han provisto un password válido en tres intentos son listados en /etc/hosts.deny y son baneados permanentemente de acceder al puerto del ssh.</p>
+<p><span style="font-size:16px;"><u><strong>Restringir el comando &ldquo;su&rdquo; al grupo de administradores.</strong></u></span></p>
+<p>Ya nuestro servidor no permite accesos usando el usuario &ldquo;root&rdquo;, pero si alguien adivina o roba la credencial de un usuario y accede al sistema en teoría podría ejecutar un &ldquo;su -&rdquo; para ganar privilegios de administrador. Es por ello que siempre es una buena práctica, especialmente cuando hay varios &ldquo;usuarios&rdquo; con acceso a un servidor el restringir el uso del comando &ldquo;su&rdquo; sólo para aquellos usuarios que pertenecen al grupo de administadores. Esto lo conseguimos a través de estos comandos:</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+groupadd admin
+usermod -a -G admin &lt;tu_usuario&gt;
+dpkg-statoverride --update --add root admin 4750 /bin/su
+&lt;/tu_usuario&gt;
+</code></pre><p>Reemplaza &lt;tu_usuario&gt; por el usuario que utiliza para loguearse al servidor. Para verificar que los cambios están hechos ejecute este comando y debería de ver una respuesta similar: &lt;/tu_usuario&gt;</p>
+<pre tabindex="0"><code>&lt;pre id=&quot;terminal&quot;&gt;
+# ls -lh /bin/su
+
+-rwsr-x--- 1 root admin 31K 2010-01-26 17:09 /bin/su
+</code></pre><p><u><span style="font-size:16px;"><strong>Asegurar los parámetros de red por defecto.</strong></span></u></p>
+<p>Para hacer esto debemos editar el archivo &ldquo;/etc/sysctl.conf&rdquo; y agregar estas líneas:</p>
+<p><span style="color:#0000FF;"><span style="font-family:courier new,courier,monospace;"><strong>net.ipv4.conf.all.accept_source_route=0<br>
+net.ipv4.conf.default.accept_source_route=0<br>
+net.ipv4.icmp_echo_ignore_broadcasts = 1<br>
+net.ipv4.icmp_echo_ignore_all = 1<br>
+net.ipv4.conf.all.log_martians = 1</strong></span></span></p>
+<p>Luego de ello, debemos reiniciar los valores por defecto de las conección de red, ejecutando este comando:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>sysctl -p</strong></span></p>
+<p>Básicamente lo que hemos hecho es prohibir redirección de paquetes originados fuera y bloquear el protocolo ICPM (ping). Si vamos a usar este servidor como una VPN, pues entonces no debemos aplicar las dos primeras líneas que deshabilitan el source route.</p>
+<p><span style="font-size:16px;"><u><strong>Instalar software de búsqueda de rootkits.</strong></u></span></p>
+<p>Las dos opciones más conocidas que tenemos aquín son <a href="http://rkhunter.sourceforge.net/">rkhunter</a> y <a href="http://freecode.com/projects/chkrootkit">Chkrootkit</a>. En lo personal recomiendo rkhunter, pero se puede usar cualquiera de los dos. Lo importante es tener al menos uno de ellos y ejecutarlo con regularidad para detectar alguna intrusión en nuestro sistema. Para intalar rkhunter en Ubuntu sólo debemos ejecutar este comando:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>apt-get install rkhunter</strong></span></p>
+<p>Para usar rkhunter, primero debemos actualizar su DB de vulnerabilidades conocidas con este comando:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>rkhunter –update</strong></span></p>
+<p>Luego ya podemos ejecutar una búsqueda en nuestro sistema con este comando:</p>
+<p><span style="font-family:courier new,courier,monospace;"><strong>rkhunter –check</strong></span></p>
+<p>Espero que esta breve tutorial de las normas de seguridad básicas a tener en cuenta en un servidor de producción les haya servido y permita mejorar la seguridad de su red y de Internet como un todo.</p>
+
+
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://websistente.com/posts/2013-11-05-node-js-con-twitter-bootstrap/" data-toggle="tooltip" data-placement="top" title="node.js con Twitter Bootstrap">&larr; Artículo anterior</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://websistente.com/posts/2013-11-07-como-instalar-ghost-plataforma-de-blog-en-node-js/" data-toggle="tooltip" data-placement="top" title="Cómo instalar Ghost (plataforma de blog en node.js)">Artículo siguiente &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2014
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://websistente.com/">Websistente</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.92.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="http://websistente.com/js/main.js"></script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://websistente.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
